@@ -7,7 +7,8 @@ const unsplash = new Unsplash({
 
 export default function SearchPhotosForm (){
     const[query, setQuery] = useState("");
-        console.log(query)
+    const [pics, setPics] = useState([]);
+       
 
     const searchPhotos = async (e) => {
         e.preventDefault();
@@ -15,7 +16,7 @@ export default function SearchPhotosForm (){
         .photos(query)
         .then(toJson)
         .then((json) => {
-          console.log(json);
+          setPics(json.results);
         });
     };    
         return (
